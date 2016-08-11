@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PureFx</title>
+  <title>PURE FX</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <%= link_to 'PURE FX', root_path, class: 'navbar-brand' %>
+	    </div>
+	    <div class="navbar-right">
+	      <% if current_user %>
+	        <ul class="nav navbar-nav pull-right">
+	          <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
+	          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+	        </ul>
+	      <% else %>
+	        <ul class="nav navbar-nav">
+	          <li><%= link_to 'Sign In With Facebook', '/auth/facebook' %></li>
+	        </ul>
+	      <% end %>
+	    </div>
+	  </div>
+	</nav>
 
-<%= yield %>
+	<div class="container">
+	  <% flash.each do |key, value| %>
+	    <div class="alert alert-<%= key %>">
+	      <%= value %>
+	    </div>
+	  <% end %>
+
+	  <%= yield %>
+	</div>
 
 </body>
 </html>
