@@ -38,8 +38,6 @@ gem 'bootstrap-sass'
 # gem 'capistrano-rails', group: :development
 
 # OAuth gem for twitter
-gem 'omniauth-twitter'
-# OAuth gem for twitter
 gem 'omniauth-facebook'
 
 group :development, :test do
