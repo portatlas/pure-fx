@@ -1,3 +1,3 @@
 class Status < ActiveRecord::Base
-	belongs_to :fxtran
+	has_many :fxtrans
 end

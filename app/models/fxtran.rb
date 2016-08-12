@@ -1,3 +1,4 @@
 class Fxtran < ActiveRecord::Base
-	has_one :status
+	belongs_to :status
+
 end
