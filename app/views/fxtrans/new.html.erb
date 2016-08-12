@@ -1,43 +1,35 @@
 <div class="container">
   <h3>NEW FX FORM</h3>
-  <%= form_for @fxtran do |f| %>
-    <%= f.label  %>
-  <%= end %>
-<!--   <form class="fx-request" action="/fxtrans" method="post">
+  <form class="fx-request" action="/fxtrans" method="post">
 
     <input type="hidden" name="fxtran[requestor_id]" value="<%= session[:user_id] %>"></input>
 
     <div class="form-group">
-      <label for="fxtran_trantype" class="control-label">I HAVE
+      <label class="control-label">I HAVE
 
-      <label for="fxtran_amount" class="control-label"></label>
-      <input class="form" id="fxtran_amount" type="text" name="fxtran[amount]">
+      <label for="base_amount" class="control-label"></label>
+      <input class="form" id="fxtran_base_amount" type="text" name="fxtran[base_amount]">
 
         OF THIS CURRENCY: </label>
-      <select name="fxtran[curr_sell]" >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="CHF">CHF</option>
+      <select name="fxtran[base_curr_id]" >
+        <option value="1">USD</option>
+        <option value="2">EUR</option>
+        <option value="3">CHF</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="fxtran_trantype" class="control-label">I WANT THIS CURRENCY: </label>
-      <select name="fxtran[curr_buy]" >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="CHF">CHF</option>
+      <select name="fxtran[quote_curr_id]" >
+        <option value="1">USD</option>
+        <option value="2">EUR</option>
+        <option value="3">CHF</option>
       </select>
     </div>
 
-    <div class="form-group">
-      <label for="fxtran_zipcode" class="control-label">ZIPCODE: </label>
-      <input class="form" id="fxtran_zipcode" type="text" name="fxtran[zipcode]">
-    </div>
-
-    <input type="hidden" name="fxtran[status]" value="OPEN"></input>
+    <input type="hidden" name="fxtran[status_id]" value="1"></input>
 
     <button class="btn btn-primary" type="submit">SUBMIT</button>
-  </form> -->
+  </form>
 
 </div>
