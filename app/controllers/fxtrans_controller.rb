@@ -1,0 +1,2 @@
+class FxtransController < ApplicationController
+end
