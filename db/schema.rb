@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20160811212759) do
     t.integer  "status_id",                              null: false
     t.integer  "requestor_id",                           null: false
     t.integer  "acceptor_id"
-    t.decimal  "base_amount",   precision: 8,  scale: 2
-    t.decimal  "base_curr_id",                           null: false
+    t.float    "base_amount"
+    t.integer  "base_curr_id",                           null: false
     t.integer  "quote_curr_id",                          null: false
-    t.decimal  "fxrate",        precision: 10, scale: 7
+    t.integer  "fxrate"
     t.decimal  "exp_amount",    precision: 8,  scale: 2
     t.string   "place"
     t.string   "city"
