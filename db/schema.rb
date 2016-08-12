@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160812212140) do
     t.float    "base_amount"
     t.integer  "base_curr_id",                           null: false
     t.integer  "quote_curr_id",                          null: false
-    t.integer  "fxrate"
+    t.decimal  "fxrate",        precision: 10, scale: 7
     t.decimal  "exp_amount",    precision: 8,  scale: 2
     t.string   "place"
     t.string   "city"
