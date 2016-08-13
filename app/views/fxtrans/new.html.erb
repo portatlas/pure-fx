@@ -1,6 +1,20 @@
 <div class="container">
   <h3>NEW FX FORM</h3>
-  <form class="fx-request" action="/fxtrans" method="post">
+
+  <%= form_for @fxtran do |f| %>
+    <%= f.label "I HAVE" %>:
+    <%= f.text_field :base_amount %>
+    <%= f.label "OF THIS CURRENCY" %>
+
+    <div class="control-group">
+        <%= f.label :base_curr_id, class: 'control-group' %>
+        <div class="controls">
+            <%= collection_select(:fxtran, :base_curr_id, Currency.all, :id, :curr_name, prompt: true) %>
+        </div>
+    </div>
+  <% end %>
+
+  <!-- <form class="fx-request" action="/fxtrans" method="post">
 
     <input type="hidden" name="fxtran[requestor_id]" value="<%= session[:user_id] %>"></input>
 
@@ -16,7 +30,7 @@
         <option value="2">EUR</option>
         <option value="3">CHF</option>
       </select>
-    </div>
+    </div
 
     <div class="form-group">
       <label for="fxtran_trantype" class="control-label">I WANT THIS CURRENCY: </label>
@@ -31,5 +45,5 @@
 
     <button class="btn btn-primary" type="submit">SUBMIT</button>
   </form>
-
+ -->
 </div>
