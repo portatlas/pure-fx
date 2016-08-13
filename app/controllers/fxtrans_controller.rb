@@ -1,5 +1,10 @@
 class FxtransController < ApplicationController
 
+	def new
+		@fxtran = Fxtran.new
+		# @currencies = Currency.all
+	end
+
 	def create
 		@fxtran = Fxtran.new(fxtran_params)
 		if @fxtran.save
