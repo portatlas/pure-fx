@@ -13,8 +13,8 @@
       <%= collection_select(:fxtran, :quote_curr_id, Currency.all, :id, :curr_name, prompt: true) %>
     </div>
 
-    <%= hidden_field_tag :status_id,  1 %>
-    <%= hidden_field_tag :requestor_id,  session[:user_id] %>
+    <%= f.hidden_field :status_id, :value =>  "1" %>
+    <%= f.hidden_field :requestor_id, :value =>  session[:user_id] %>
 
     <%= f.submit %>
  
