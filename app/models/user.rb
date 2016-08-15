@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_one :fxrequest, {class_name: "Fxtran", foreign_key: :requestor_id}
+  has_many :fxaccepts, {class_name: "Fxtran", foreign_key: :acceptor_id}
 
   class << self
     def from_omniauth(auth_hash)
