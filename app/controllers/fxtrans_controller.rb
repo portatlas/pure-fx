@@ -4,6 +4,10 @@ class FxtransController < ApplicationController
 		@fxtran = Fxtran.new
 	end
 
+	def index
+		@fxtrans = Fxtran.all
+	end
+
 	def create
 		@fxtran = Fxtran.new(fxtran_params)
 		@fxtran.lat = cookies[:latitude]
