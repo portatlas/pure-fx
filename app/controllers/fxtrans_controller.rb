@@ -5,7 +5,13 @@ class FxtransController < ApplicationController
 	end
 
 	def index
-		@fxtrans = Fxtran.all
+		# if request.xhr?
+		# 	@fxtrans = Fxtran.where(status_id: '1')
+		# 	binding.pry
+		# else
+			@fxtrans = Fxtran.where(status_id: '1')
+											 # .near([])
+		# end
 	end
 
 	def create
