@@ -3,20 +3,60 @@
     <h1>Welcome!</h1>
   </div>
   <div class="panel panel-default">
-    <a href="/fxtrans" class="btn btn-info btn-lg btn-block">FIND FX TRANSACTION NEAR YOU</a>
+    <a id="fxtran-list" href="/fxtrans" class="btn btn-info btn-lg btn-block" role="button" >FIND FX TRANSACTION NEAR YOU</a>
+    <!-- ?lat=<position.coords.latitude>&lng=<position.coords.longitude> -->
     <a href="/fxtrans/new" class="btn btn-primary btn-lg btn-block" role="button" >CREATE FX REQUEST</a>
-<!--     <div class="panel-body">
-      <ul>
-        <li><strong>Name:</strong> <%= current_user.name %></li>
-        <li><strong>Provider:</strong> <%= current_user.provider %></li>
-        <li><strong>uID:</strong> <%= current_user.uid %></li>
-        <li><strong>Location:</strong> <%= current_user.location %></li>
-        <li><strong>Avatar URL:</strong> <%= current_user.image_url %></li>
-        <li><strong>URL:</strong> <%= current_user.url %></li>
-      </ul>
-    </div> -->
   </div>
 <% else %>
   <%= render 'welcome' %>
 <% end %>
 
+<script type="text/javascript">
+
+  var lat;
+  var lng;
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maxmiumAge: 0
+  };
+
+  function success(pos){
+    var crd = pos.coords
+
+    // console.log('Coordinates are:');
+    // console.log('Latitude: ' + crd.latitude);
+    // console.log('Longitude: ' + crd.longitude);
+    // console.log('Accuracy: ' + crd.accuracy);
+
+    var lat = "latitude=" + crd.latitude;
+    var lng = "longitude=" + crd.longitude;
+  };
+
+  function error(err){
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  }
+
+  function storeGeolocation(){
+    console.log("make ajax")
+    navigator.geolocation.getCurrentPosition(success, error, options)
+  };
+
+  $("#fxtran-list").click(function(event){
+    event.preventDefault();
+    console.log("No clicks allowed")
+    navigator.geolocation.getCurrentPosition(success, error, options)
+
+
+    $.ajax({
+      method: "GET",
+      url: "/fxtrans/?lat=" + lat + "&lng=" + lng + "",
+    })
+    .done(function(msg){
+      console.log(msg);
+    })
+
+
+  });
+</script>
