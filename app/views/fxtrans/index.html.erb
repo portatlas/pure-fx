@@ -1,4 +1,27 @@
 <h3>OPEN FX REQUEST IN YOUR AREA</h3>
-<% @fxtrans.each do |trans| %>
-<%= trans.requestor_id %>
-<% end %>
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th>ID</th>
+      <th>PLACE</th>
+      <th>USER</th>
+      <th>AMOUNT</th>
+      <th>HAVE</th>
+      <th>WANT</th>
+      <th>RATES</th>
+      <th>EXPECTED VALUES</th>
+      <th>STATUS</th>
+    </tr>
+    <% @fxtrans.length.times do |tran| %>
+    <tr>
+      <td><%= @fxtrans[tran].id %> </td>
+      <td><%= @fxtrans[tran].place %></td>
+      <td class="requestor"><%= @fxtrans[tran].requestor.name %></td>
+      <td><%= @fxtrans[tran].base_amount %></td>
+      <td class="source"><%= @fxtrans[tran].base_curr.curr_code %></td>
+      <td class="quote"><%= @fxtrans[tran].quote_curr.curr_code %></td>
+      <td><%= "yes" %></td>
+      <td><%= "yes" %></td>
+      <td class="open"><%= @fxtrans[tran].status.status_type %></td>
+    </tr>
+    <% end %>
+  </table>
