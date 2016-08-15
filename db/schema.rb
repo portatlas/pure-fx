@@ -11,7 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811003231) do
+ActiveRecord::Schema.define(version: 20160812222839) do
+
+  create_table "currencies", force: :cascade do |t|
+    t.string   "curr_code",  null: false
+    t.string   "curr_name",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fxtrans", force: :cascade do |t|
+    t.integer  "status_id",                              null: false
+    t.integer  "requestor_id",                           null: false
+    t.integer  "acceptor_id"
+    t.float    "base_amount"
+    t.integer  "base_curr_id",                           null: false
+    t.integer  "quote_curr_id",                          null: false
+    t.decimal  "fxrate",        precision: 10, scale: 7
+    t.decimal  "exp_amount",    precision: 8,  scale: 2
+    t.string   "place"
+    t.string   "city"
+    t.decimal  "lat",           precision: 10, scale: 6
+    t.decimal  "lng",           precision: 10, scale: 6
+    t.integer  "accry"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "status_type", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",     null: false
