@@ -16,39 +16,9 @@
     <%= f.hidden_field :status_id, :value =>  "1" %>
     <%= f.hidden_field :requestor_id, :value =>  session[:user_id] %>
 
-    <%= f.submit 'Create FX Request' %>
+    <%= f.submit 'Create FX Request', :class => "fx-submit" %>
  
   
   <% end %>
 
 </div>
-
-<script type="text/javascript">
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maxmiumAge: 0
-  };
-
-  function success(pos){
-    var crd = pos.coords
-
-    console.log('Coordinates are:');
-    console.log('Latitude: ' + crd.latitude);
-    console.log('Longitude: ' + crd.longitude);
-    console.log('Accuracy: ' + crd.accuracy);
-
-    document.cookie = "latitude=" + crd.latitude;
-    document.cookie = "longitude=" + crd.longitude;
-    document.cookie = "accuracy=" + crd.accuracy;
-  };
-
-  function error(err){
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-  }
-
-  $(document).ready(function(){
-    console.log("it is loaded yes")
-    navigator.geolocation.getCurrentPosition(success, error, options)
-  });
-</script>
