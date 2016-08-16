@@ -2,7 +2,9 @@
   <h3>NEW FX FORM</h3>
 
   <%= form_for @fxtran do |f| %>
-
+    <% @fxtran.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
     <%= f.label "I HAVE" %>:
     <%= f.text_field :base_amount, :required => true %>
     <%= f.label "OF THIS CURRENCY" %>
