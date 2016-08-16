@@ -10,7 +10,8 @@ class FxtransController < ApplicationController
 		# 	binding.pry
 		# else
 			@fxtrans = Fxtran.where(status_id: '1')
-											 # .near([])
+			# session[:lat] = params[:lat]
+			# binding.pry
 		# end
 	end
 
