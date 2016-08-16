@@ -4,13 +4,13 @@
   <%= form_for @fxtran do |f| %>
 
     <%= f.label "I HAVE" %>:
-    <%= f.text_field :base_amount %>
+    <%= f.text_field :base_amount, :required => true %>
     <%= f.label "OF THIS CURRENCY" %>
-    <%= collection_select(:fxtran, :base_curr_id, Currency.all, :id, :curr_name, prompt: true) %>
+    <%= collection_select(:fxtran, :base_curr_id, Currency.all, :id, :curr_name, {:prompt => 'Choose a currency'}, {:required => true}) %>
 
     <div>
       <%= f.label "I want this currency" %>
-      <%= collection_select(:fxtran, :quote_curr_id, Currency.all, :id, :curr_name, prompt: true) %>
+      <%= collection_select(:fxtran, :quote_curr_id, Currency.all, :id, :curr_name, {:prompt => 'Choose a currency'}, {:required => true}) %>
     </div>
 
     <%= f.hidden_field :status_id, :value =>  "1" %>
